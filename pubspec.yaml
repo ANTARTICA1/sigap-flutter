@@ -1,0 +1,39 @@
+name: sensormobile
+description: "Sistem Gerak Aman dari Pencurian"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  sensors_plus: ^7.0.0
+  flutter_ringtone_player: ^4.0.0+4
+  vibration: ^3.1.8
+  battery_plus: ^7.0.0
+  shared_preferences: ^2.5.5
+  permission_handler: ^12.0.1
+  provider: ^6.1.5+1
+  geolocator: ^14.0.3
+  camera: ^0.12.0+2
+  path_provider: ^2.1.5
+  url_launcher: ^6.3.2
+  volume_controller: ^3.5.0
+  wakelock_plus: ^1.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - img/1.png
+    - img/2.png
+    - img/3.png
+    - img/4.png
