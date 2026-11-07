@@ -2,6 +2,13 @@
 
 SIGAP (Sistem Gerak Aman dari Pencurian) adalah aplikasi keamanan perangkat bergerak berbasis Flutter yang dirancang untuk melindungi smartphone dari tindakan pencurian dan pemindahan tanpa izin menggunakan integrasi sensor perangkat keras.
 
+
+## Tangkapan Layar Antarmuka
+
+| Dashboard Siaga | Layar Darurat Terkunci | Log Bukti Forensik |
+|:---:|:---:|:---:|
+| ![Dashboard Siaga](docs/screenshots/sigap_dashboard.png) | ![Layar Darurat](docs/screenshots/sigap_lockscreen.png) | ![Log Penyusup](docs/screenshots/sigap_intruder_logs.png) |
+
 ## Fitur Utama
 
 - Deteksi Gerakan (Akselerometer): Memantau posisi aksis perangkat secara kontinu. Pergerakan atau pengangkatan perangkat yang mencurigakan akan langsung memicu sistem alarm.
