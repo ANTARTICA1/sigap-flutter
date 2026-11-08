@@ -1,61 +1,81 @@
-# SIGAP
+# SIGAP - Motion-Activated Anti-Theft & Mobile Hardware Security
 
-SIGAP (Sistem Gerak Aman dari Pencurian) adalah aplikasi keamanan perangkat bergerak berbasis Flutter yang dirancang untuk melindungi smartphone dari tindakan pencurian dan pemindahan tanpa izin menggunakan integrasi sensor perangkat keras.
+SIGAP is an advanced mobile device security application built with Flutter, engineered to safeguard smartphones against unauthorized physical relocation, pickpocketing, and charger unplugging through real-time hardware sensor integration.
 
+## Application Interface Previews
 
-## Tangkapan Layar Antarmuka
-
-| Dashboard Siaga | Layar Darurat Terkunci | Log Bukti Forensik |
+| Armed Monitoring Dashboard | Immersive Emergency Lockscreen | Forensic Evidence Logs |
 |:---:|:---:|:---:|
-| ![Dashboard Siaga](docs/screenshots/sigap_dashboard.png) | ![Layar Darurat](docs/screenshots/sigap_lockscreen.png) | ![Log Penyusup](docs/screenshots/sigap_intruder_logs.png) |
+| ![Armed Monitoring Dashboard](docs/screenshots/sigap_dashboard.png) | ![Immersive Emergency Lockscreen](docs/screenshots/sigap_lockscreen.png) | ![Forensic Evidence Logs](docs/screenshots/sigap_intruder_logs.png) |
 
-## Fitur Utama
+## Core Capabilities
 
-- Deteksi Gerakan (Akselerometer): Memantau posisi aksis perangkat secara kontinu. Pergerakan atau pengangkatan perangkat yang mencurigakan akan langsung memicu sistem alarm.
-- Deteksi Pemutusan Pengisi Daya (Charger): Mendeteksi status baterai secara langsung. Pelepasan kabel charger secara paksa akan langsung memicu alarm.
-- Waktu Hitung Mundur (Countdown): Jeda waktu 5 detik sebelum sistem siaga aktif, memberikan waktu kepada pengguna untuk meletakkan perangkat secara stabil di permukaan datar.
-- Alarm Keras dan Penguncian Volume: Memutar suara alarm darurat secara berulang dan mengunci volume perangkat pada tingkat 100 persen untuk mencegah pembungkaman suara.
-- Layar Kunci Darurat dengan Keypad PIN: Mengunci navigasi antarmuka secara penuh saat alarm terpicu. Pengguna wajib memasukkan PIN keamanan numerik yang valid untuk menonaktifkan sistem.
-- Pelacakan Lokasi GPS: Mengambil data koordinat geografis terkini saat alarm terpicu dan menyimpannya bersama tautan Google Maps.
-- Pengambilan Foto Penyusup: Mengambil foto secara otomatis melalui kamera depan ketika alarm terpicu atau ketika terjadi kesalahan input PIN sebanyak 3 kali.
-- Riwayat Insiden dan Bukti: Menyimpan daftar catatan insiden keamanan lokal lengkap dengan cap waktu, jenis pemicu, koordinat lokasi, dan foto bukti.
-- Panduan Interaktif: Petunjuk langkah demi langkah mengenai tata cara pengaktifan dan penggunaan aplikasi.
+- Tri-Axis Accelerometer Motion Detection: Continuously streams hardware accelerometer vectors (XYZ). Any unauthorized shifting, lifting, or tampering triggers immediate alarm protocols.
+- Charger Power Interruption Trigger: Detects sudden disconnects from charging sources, securing devices left on public charging stations.
+- Arming Countdown Timer: Provides a 5-second arming delay, allowing the owner to position the handset steadily on flat surfaces before sensors become active.
+- Anti-Bypass 100% Volume Watchdog: Loops high-decibel emergency siren audio while programmatically forcing the system volume to 100% to prevent silencing.
+- Immersive PIN Emergency Lock: Overlays an immersive full-screen barrier that blocks system gesture navigation, back buttons, and recent apps until a valid numeric PIN is authenticated.
+- Automated Intruder Camera Capture: Discretely snaps front-camera photographs of whoever triggers the alarm or repeatedly enters invalid unlock PINs.
+- Real-Time GPS Geolocation Logging: Captures precise latitude and longitude coordinates during an incident and links them with map navigation.
+- Local Forensic Incident Log: Retains a tamper-resistant local archive documenting timestamped breach events, trigger classifications, geographic coordinates, and intruder portraits.
+- Emergency Contact Dispatch: Quick action links to broadcast distress alerts with location data via WhatsApp or SMS to preconfigured emergency contacts.
 
-## Kebutuhan Sistem
+## System Requirements
 
-- Flutter SDK: Versi 3.11.5 atau lebih tinggi
-- Dart SDK: Versi 3.11.5 atau lebih tinggi
-- Android: Android 5.0 (API Level 21) atau versi yang lebih baru
-- Izin Perangkat Keras: Kamera depan, Akses Lokasi (GPS), Getar (Vibrate), dan Sensor Gerak
+- Flutter SDK: Version 3.11.5 or higher
+- Dart SDK: Version 3.11.5 or higher
+- Target Platform: Android 5.0 (API Level 21) or higher
+- Hardware Permissions: Front Camera, Fine Location (GPS), Vibration, and Hardware Motion Sensors
 
-## Instalasi dan Menjalankan Proyek
+## Installation and Setup
 
-1. Klon repositori ini:
-   git clone <URL_REPOSITORI>
-   cd sensormobile
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ANTARTICA1/sigap-flutter.git
+   cd sigap-flutter
+   ```
 
-2. Pasang semua dependensi yang diperlukan:
+2. Install Flutter package dependencies:
+   ```bash
    flutter pub get
+   ```
 
-3. Pastikan perangkat atau emulator Android terhubung:
+3. Verify connected Android devices or emulators:
+   ```bash
    flutter devices
+   ```
 
-4. Jalankan aplikasi pada mode pengembangan:
+4. Launch the application in debug mode:
+   ```bash
    flutter run
+   ```
 
-5. Untuk membangun berkas rilis Android (APK):
+5. Build the optimized production release APK:
+   ```bash
    flutter build apk --release
+   ```
 
-## Struktur Direktori Utama
+## Directory Structure
 
-- lib/main.dart: Titik awal aplikasi dan inisialisasi provider utama.
-- lib/models/: Model data untuk entitas insiden keamanan (SecurityEvent).
-- lib/providers/: Manajemen status keamanan, sensor akselerometer, dan baterai (SecurityProvider).
-- lib/screens/: Tampilan antarmuka utama, layar darurat, pengaturan, riwayat bukti, dan panduan.
-- lib/services/: Layanan pendukung seperti akses kamera, lokasi GPS, dan penyimpanan lokal.
-- lib/utils/: Definisi tema warna, tipografi, dan konstanta aplikasi.
-- img/: Berkas aset gambar ilustrasi panduan penggunaan.
+```
+sigap-flutter/
+├── lib/
+│   ├── main.dart             # Application entry point and root providers initialization
+│   ├── models/               # Domain models (SecurityEvent, IncidentRecord)
+│   ├── providers/            # State management for accelerometer streams and battery status
+│   ├── screens/              # UI screens (Dashboard, EmergencyLock, Logs, Settings)
+│   ├── services/             # Platform services (Camera API, Geolocator, Audio, Storage)
+│   └── utils/                # Theme definitions, constants, and audio assets
+├── docs/
+│   └── screenshots/          # High-resolution interface preview assets
+├── pubspec.yaml              # Package dependencies and asset manifests
+└── README.md                 # Technical documentation
+```
 
-## Lisensi
+## Author
 
-Proyek ini dikembangkan untuk kebutuhan perlindungan keamanan perangkat bergerak. Seluruh hak cipta dilindungi.
+Anak Agung Ngurah Krisna Artha Wibawa ([ANTARTICA1](https://github.com/ANTARTICA1))
+
+## License
+
+This project is open-source and licensed under the MIT License.
